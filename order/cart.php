@@ -5,6 +5,16 @@ include '../_base.php';
 
 if (is_post()) {
     // TODO
+    $btn = req('btn');
+    if ($btn == 'clear') {
+        set_cart();
+        redirect('?');
+    }
+
+    $id     = req('id');
+    $unit   = req('unit');
+    update_cart($id, $unit);
+    redirect();
 }
 
 // ----------------------------------------------------------------------------
@@ -31,8 +41,20 @@ include '../_head.php';
 
     <?php
         // TODO
-        foreach ([] as $TODO):
+        $count = 0;
+        $total = 0;
+
+        $stm = $_db->prepare('SELECT * FROM product WHERE id = ?');
+        $cart = get_cart();
+
+        foreach ($cart as $id => $unit):
             // TODO
+            $stm->execute([$id]);
+            $p = $stm->fetch();
+
+            $subtotal = $p->price * $unit;
+            $count += $unit;
+            $total += $subtotal;
     ?>
         <tr>
             <td><?= $p->id ?></td>
@@ -41,10 +63,12 @@ include '../_head.php';
             <td>
                 <form method="post">
                     <!-- TODO -->
+                     <?= html_hidden('id') ?>
+                     <?= html_select('unit', $_units, '') ?>
                 </form>            
             </td>
             <td class="right">
-                <?= 'TODO' ?>
+                <?= sprintf('%.2f', $subtotal) ?>
                 <img src="/products/<?= $p->photo ?>" class="popup">
             </td>
         </tr>
@@ -52,19 +76,19 @@ include '../_head.php';
 
     <tr>
         <th colspan="3"></th>
-        <th class="right"><?= 'TODO' ?></th>
-        <th class="right"><?= 'TODO' ?></th>
+        <th class="right"><?= $count ?></th>
+        <th class="right"><?= sprintf('%.2f', $total) ?></th>
     </tr>
 </table>
 
 <p>
     <!-- TODO -->
-    <?php if (1): ?>
+    <?php if ($cart): ?>
         <button data-post="?btn=clear">Clear</button>
 
-        <?php if (1): ?>
+        <?php if ($_user?->role == 'Member'): ?>
             <button data-post="checkout.php">Checkout</button>
-        <?php  ?>
+        <?php else: ?>
             Please <a href="/login.php">login</a> as member to checkout
         <?php endif ?>
     <?php endif ?>
@@ -72,6 +96,7 @@ include '../_head.php';
 
 <script>
     // TODO
+    $('select').on('change', e => e.target.form.submit());
 </script>
 
 <?php
