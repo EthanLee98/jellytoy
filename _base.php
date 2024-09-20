@@ -328,7 +328,7 @@ function update_cart($id, $unit) {
 // ============================================================================
 
 // Global PDO object
-$_db = new PDO('mysql:dbname=jellyfish', 'root', '', [
+$_db = new PDO('mysql:dbname=jellytoy', 'root', '', [
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
 ]);
 
