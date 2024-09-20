@@ -5,6 +5,10 @@ include '../_base.php';
 
 if (is_post()) {
     // TODO
+    $id     = req('id');
+    $unit   = req('unit');
+    update_cart($id, $unit);
+    redirect();
 }
 
 $arr = $_db->query('SELECT * FROM product');
@@ -57,9 +61,17 @@ include '../_head.php';
 <div id="products">
     <?php foreach ($arr as $p): ?>
         <!-- TODO -->
+         <?php
+         $cart = get_cart();
+         $id   = $p->id;
+         $unit = $cart[$p->id] ?? 0;
+         ?>
         <div class="product">
             <form method="post">
                 <!-- TODO ✅ -->
+                <?= $unit ? '✅' : '' ?>
+                <?= html_hidden('id') ?>
+                <?= html_select('unit', $_units, '') ?>
             </form>
                 
             <img src="/products/<?= $p->photo ?>"
@@ -72,6 +84,7 @@ include '../_head.php';
 
 <script>
     // TODO
+    $('select').on('change', e => e.target.form.submit());
 </script>
 
 <?php

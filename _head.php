@@ -31,6 +31,11 @@
         <a href="/order/cart.php">
             Shopping Cart
             <!-- TODO -->
+             <?php
+                $cart = get_cart();
+                $count = count($cart);
+                if ($count) echo "($count)";
+            ?>
         </a>
 
         <?php if ($_user?->role == 'Member'): ?>

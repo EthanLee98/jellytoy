@@ -298,16 +298,29 @@ function get_mail() {
 // Get shopping cart
 function get_cart() {
     // TODO
+    return $_SESSION['cart'] ?? [];
 }
 
 // Set shopping cart
 function set_cart($cart = []) {
     // TODO
+    $_SESSION['cart'] = $cart;
 }
 
 // Update shopping cart
 function update_cart($id, $unit) {
     // TODO
+    $cart = get_cart();
+
+    if ($unit >= 1 && $unit <= 10 && is_exists($id, 'product', 'id')) {
+        $cart[$id] = $unit;
+        ksort($cart);
+    }
+    else {
+        unset($cart[$id]);
+    }
+
+    set_cart($cart);
 }
 
 // ============================================================================
@@ -315,7 +328,7 @@ function update_cart($id, $unit) {
 // ============================================================================
 
 // Global PDO object
-$_db = new PDO('mysql:dbname=jellytoy', 'root', '', [
+$_db = new PDO('mysql:dbname=jellyfish', 'root', '', [
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
 ]);
 
@@ -341,3 +354,4 @@ function is_exists($value, $table, $field) {
 
 // Range 1-10
 // TODO
+$_units = array_combine(range(1, 10), range(1, 10));

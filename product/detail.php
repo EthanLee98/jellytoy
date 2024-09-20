@@ -5,6 +5,10 @@ include '../_base.php';
 
 if (is_post()) {
     // TODO
+    $id     = req('id');
+    $unit   = req('unit');
+    update_cart($id, $unit);
+    redirect();
 }
 
 $id  = req('id');
@@ -49,8 +53,16 @@ include '../_head.php';
         <th>Unit</th>
         <td>
             <!-- TODO -->
+            <?php
+            $cart = get_cart();
+            $id   = $p->id;
+            $unit = $cart[$p->id] ?? 0;
+            ?>
             <form method="post">
                 <!-- TODO ✅ -->
+                <?= html_hidden('id') ?>
+                <?= html_select('unit', $_units, '') ?>
+                <?= $unit ? '✅' : '' ?>
             </form>
         </td>
     </tr>
@@ -62,6 +74,7 @@ include '../_head.php';
 
 <script>
     // TODO
+    $('select').on('change', e => e.target.form.submit());
 </script>
 
 <?php
