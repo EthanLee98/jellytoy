@@ -28,8 +28,6 @@ include '_head.php';
         <td>Member</td>
     </tr>
 </table>
-<table>
-</table>
 
 <?php
 include '_foot.php';
