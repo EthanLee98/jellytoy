@@ -31,4 +31,4 @@ include '_head.php';
 
 <?php
 include '_foot.php';
-// hello
+include '_foot.php';
