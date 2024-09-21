@@ -30,5 +30,5 @@ include '_head.php';
 </table>
 
 <?php
+include '_footer.php';
 include '_foot.php';
-include '_foot123.php'; // For fun
