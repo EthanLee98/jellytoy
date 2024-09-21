@@ -34,4 +34,3 @@ include '_foot.php';
 include '_foot.php';
 include '_foot.php';
 include '_foot.php';
-include '_foot.php';
