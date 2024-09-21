@@ -119,7 +119,9 @@ CREATE TABLE `product` (
   `description` text NOT NULL,
   `price` decimal(8,2) NOT NULL,
   `stock` int(11) NOT NULL,
-  `photo` varchar(255) DEFAULT NULL,
+  `photo_1` varchar(255) DEFAULT NULL,
+  `photo_2` varchar(255) DEFAULT NULL,
+  `photo_3` varchar(255) DEFAULT NULL,
   `video_url` varchar(255) DEFAULT NULL,
   `category_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
