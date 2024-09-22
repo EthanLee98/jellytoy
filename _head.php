@@ -49,9 +49,9 @@
             <a href="/user/password.php">Password</a>
             <a href="/logout.php">Logout</a>
         <?php else: ?>
-            <a href="/user/register.php">Register</a>
+            <a href="jellytoy/user/register.php">Register</a>
             <a href="/user/reset.php">Reset Password</a>
-            <a href="/login.php">Login</a>
+            <a href="jellytoy/login.php">Login</a>
         <?php endif ?>
     </nav>
 

@@ -168,7 +168,10 @@ CREATE TABLE `user` (
   `photo` varchar(255) DEFAULT NULL,
   `role` enum('Admin','Member') NOT NULL,
   `login_attempts` int(11) DEFAULT 0,
-  `status` enum('active','blocked') DEFAULT 'active',
+  `status` enum('active','inactive') DEFAULT'inactive',
+  `isblocked` enum('yes','no') DEFAULT'no',
+  `blocked_until` DATETIME DEFAULT NULL,
+  `registration_date` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `reward_points` int(11) DEFAULT 0,
   `preferences` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`preferences`))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;

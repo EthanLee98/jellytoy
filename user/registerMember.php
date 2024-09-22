@@ -1,7 +1,34 @@
 <?php
-include '../_base.php'; // Including base.php with necessary functions
+include '../_base.php'; // Include the base file with helper functions
 
-// If form is submitted, handle registration
+// Check for expired tokens and delete associated users
+function cleanup_expired_tokens() {
+    global $_db;
+
+    // Get the current time
+    $current_time = date('Y-m-d H:i:s');
+
+    // First, delete expired tokens
+    $delete_tokens_stmt = $_db->prepare("
+        DELETE FROM token 
+        WHERE expire < ?
+    ");
+    $delete_tokens_stmt->execute([$current_time]);
+
+    // Then, delete users who have no active tokens (only inactive users)
+    $delete_users_stmt = $_db->prepare("
+        DELETE FROM user 
+        WHERE status = 'inactive' AND id NOT IN (
+            SELECT DISTINCT user_id FROM token
+        )
+    ");
+    $delete_users_stmt->execute();
+}
+
+// Call the cleanup function when loading the register page
+cleanup_expired_tokens();
+
+// Check if form is submitted
 if (is_post()) {
     $name = post('name');
     $email = post('email');
@@ -11,7 +38,7 @@ if (is_post()) {
     // Initialize error array
     $_err = [];
 
-    // Simple validation
+    // Validate user input
     if (!$name) {
         $_err['name'] = 'Name is required';
     }
@@ -27,58 +54,40 @@ if (is_post()) {
         $_err['confirm_password'] = 'Passwords do not match';
     }
 
-    // If no errors, proceed with registration
+    // Proceed if no errors
     if (!$_err) {
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-        // Insert new user with inactive status
-        $stmt = $_db->prepare("INSERT INTO user (name, email, password, status, role) VALUES (?, ?, ?, 'inactive', 'Member')");
+        // Insert new user with 'inactive' status
+        $stmt = $_db->prepare("INSERT INTO user (name, email, password, status) VALUES (?, ?, ?, 'inactive')");
         $stmt->execute([$name, $email, $hashed_password]);
 
-        // Get the user ID for the inserted user
+        // Retrieve last inserted user ID
         $user_id = $_db->lastInsertId();
 
-        // Generate a unique token for email verification
-        $token = bin2hex(random_bytes(32)); // Create a 64-character random token
-        $expiry = date('Y-m-d H:i:s', strtotime('+1 day')); // Set token expiry for 24 hours
+        // Generate a unique token and set expiration time
+        $token = bin2hex(random_bytes(32));
+        $expiry = date('Y-m-d H:i:s', strtotime('+30 seconds'));
 
-        // Insert the token into the token table
+        // Store the token and its expiry in the token table
         $token_stmt = $_db->prepare("INSERT INTO token (user_id, token, expire) VALUES (?, ?, ?)");
         $token_stmt->execute([$user_id, $token, $expiry]);
 
-        // Send email with activation link
-        require '../lib/PHPMailer.php';
-        require '../lib/SMTP.php';
-
-        $activation_link = base("activate.php?token=$token"); // Create activation link
+        // Send email with the activation link
+        $activation_link = base("jellytoy/user/activate.php?token=$token");
         $subject = "Activate your account";
-        $message = "Hi $name,<br><br>Please click the link below to activate your account:<br>$activation_link<br><br>This link will expire in 24 hours.";
+        $message = "Hi $name, \n\nPlease click the link below to activate your account: \n$activation_link \n\nThis link will expire in 30 seconds.";
 
-        $m = new PHPMailer(true); // Create a new PHPMailer instance
+        $mail = get_mail();
+        $mail->addAddress($email);
+        $mail->Subject = $subject;
+        $mail->Body    = $message;
+
         try {
-            // Server settings
-            $m->isSMTP(); // Set mailer to use SMTP
-            $m->Host = 'smtp.gmail.com'; // Specify main and backup SMTP servers
-            $m->SMTPAuth = true; // Enable SMTP authentication
-            $m->Username = 'your-email@gmail.com'; // Your SMTP username
-            $m->Password = 'your-email-password'; // Your SMTP password or app password
-            $m->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Enable TLS encryption
-            $m->Port = 587; // TCP port to connect to
-
-            // Recipients
-            $m->setFrom('your-email@gmail.com', 'Admin'); // Set the sender's email and name
-            $m->addAddress($email); // Add a recipient
-
-            // Content
-            $m->isHTML(true); // Set email format to HTML
-            $m->Subject = $subject;
-            $m->Body    = $message; // Use the message created earlier
-            $m->AltBody = strip_tags($message); // Provide a plain-text version of the email
-
-            $m->send(); // Send the email
+            $mail->send();
             echo "Registration successful! Please check your email to activate your account.";
         } catch (Exception $e) {
-            echo "Failed to send activation email. Mailer Error: {$m->ErrorInfo}";
+            echo "Failed to send activation email. Mailer Error: {$mail->ErrorInfo}";
         }
     }
 }

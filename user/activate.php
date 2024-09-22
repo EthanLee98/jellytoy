@@ -1,29 +1,44 @@
 <?php
-include '../_base.php';
+include '../_base.php'; // Include the base file with helper functions
 
-if (is_get() && isset($_GET['token'])) {
-    $token = get('token');
+if (isset($_GET['token'])) {
+    $token = $_GET['token'];
 
-    // Find the token in the database
-    $stmt = $_db->prepare("SELECT * FROM token WHERE token = ? AND expire > NOW()");
+    // Check if the token is valid and not expired
+    $stmt = $_db->prepare("SELECT user_id, expire FROM token WHERE token = ?");
     $stmt->execute([$token]);
-    $token_data = $stmt->fetch();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($token_data) {
-        // Activate the user account
-        $user_id = $token_data->user_id;
-        $update_stmt = $_db->prepare("UPDATE user SET status = 'active' WHERE id = ?");
-        $update_stmt->execute([$user_id]);
+    if ($result) {
+        $user_id = $result['user_id'];
+        $expiry = $result['expire'];
 
-        // Delete the token as it has been used
-        $delete_stmt = $_db->prepare("DELETE FROM token WHERE user_id = ?");
-        $delete_stmt->execute([$user_id]);
+        // Check if the token has expired
+        if (strtotime($expiry) > time()) {
+            // Activate user
+            $update_stmt = $_db->prepare("UPDATE user SET status = 'active' WHERE id = ?");
+            $update_stmt->execute([$user_id]);
 
-        echo "Your account has been successfully activated!";
+            // Clean up token
+            $delete_token_stmt = $_db->prepare("DELETE FROM token WHERE token = ?");
+            $delete_token_stmt->execute([$token]);
+
+            // Display success message with a link to login
+            echo "Your account has been activated! <br>";
+            echo '<a href="login.php">Click here to log in</a>';
+        } else {
+            // Delete the token record first
+            $delete_token_stmt = $_db->prepare("DELETE FROM token WHERE user_id = ?");
+            $delete_token_stmt->execute([$user_id]);
+
+            // Now delete the user record
+            $delete_user_stmt = $_db->prepare("DELETE FROM user WHERE id = ?");
+            $delete_user_stmt->execute([$user_id]);
+
+            echo "The activation link has expired. Your account has been deleted.";
+        }
     } else {
-        echo "Invalid or expired token.";
+        echo "Invalid activation link.";
     }
-} else {
-    echo "No token provided.";
 }
 ?>
