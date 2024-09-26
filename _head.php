@@ -36,11 +36,11 @@
         </div>
         <nav class="custom-navbar">
             <div class="custom-logo">
-                <a href="/index.php">JellyToy</a>
+                <a href="/index.php"><img src="/images/logo_text.png" alt="logo" width="125px"></a>
             </div>
             <ul class="custom-nav-links">
                 <li><a href="/index.php">Home</a></li>
-                <li><a href="#">About</a></li>
+                <li><a href="/product/list.php">Product</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
             <div class="custom-search-cart">
@@ -49,7 +49,7 @@
                     <button type="submit"><i class="fas fa-search"></i></button>
                 </form>
                 <a href="#"><i class="fas fa-heart"></i></a>
-                <a href="#"><i class="fas fa-shopping-cart"></i></a>
+                <a href="/order/cart.php"><i class="fas fa-shopping-cart"></i></a>
 
                 <!-- User Authentication (Login/Register or Profile) -->
                 <div class="user-auth">

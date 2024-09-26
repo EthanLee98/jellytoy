@@ -45,7 +45,7 @@ CREATE TABLE `admin_log` (
 CREATE TABLE `cart` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `product_id` char(4) NOT NULL,
+  `product_id` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
   `created_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -61,6 +61,22 @@ CREATE TABLE `category` (
   `name` varchar(100) NOT NULL,
   `description` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`id`, `name`, `description`) VALUES
+(1, 'Action Figures', 'Collectible action figures from various franchises, perfect for play or display.'),
+(2, 'Board Games', 'A variety of fun and engaging board games for family and friends.'),
+(3, 'Building Blocks', 'Creative building blocks that encourage imagination and development.'),
+(4, 'Dolls', 'A wide range of dolls for children of all ages, including fashion dolls and baby dolls.'),
+(5, 'Educational Toys', 'Toys designed to enhance learning and cognitive development in young children.'),
+(6, 'Puzzles', 'Engaging puzzles for all skill levels, promoting problem-solving and critical thinking.'),
+(7, 'Outdoor Toys', 'Toys designed for outdoor play, including sports equipment and gardening sets.'),
+(8, 'Stuffed Animals', 'A collection of cuddly stuffed animals for comfort and companionship.'),
+(9, 'Vehicles', 'Toy cars, trucks, and other vehicles that spark imagination and play.'),
+(10, 'Art Supplies', 'Creative art supplies to inspire artistic expression in children.');
 
 -- --------------------------------------------------------
 
@@ -87,7 +103,7 @@ CREATE TABLE `orders` (
 
 CREATE TABLE `order_items` (
   `order_id` int(11) NOT NULL,
-  `product_id` char(4) NOT NULL,
+  `product_id` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
   `amount` decimal(8,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -114,17 +130,31 @@ CREATE TABLE `payment` (
 --
 
 CREATE TABLE `product` (
-  `id` char(4) NOT NULL,
+  `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
+  `brand` varchar(100) NOT NULL,
   `description` text NOT NULL,
   `price` decimal(8,2) NOT NULL,
   `stock` int(11) NOT NULL,
-  `photo_1` varchar(255) DEFAULT NULL,
-  `photo_2` varchar(255) DEFAULT NULL,
-  `photo_3` varchar(255) DEFAULT NULL,
+  `photo1` varchar(255) DEFAULT NULL,
+  `photo2` varchar(255) DEFAULT NULL,
+  `photo3` varchar(255) DEFAULT NULL,
   `video_url` varchar(255) DEFAULT NULL,
-  `category_id` int(11) NOT NULL
+  `category_id` int(11) NOT NULL,
+  `date_created` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`id`, `name`, `brand`, `description`, `price`, `stock`, `photo1`, `photo2`, `photo3`, `video_url`, `category_id`, `date_created`) VALUES
+(49, 'Pc', 'Lenovo', '123', '9999.99', 20, 'uploads/mba13-spacegray-config-202402.jpeg', 'uploads/Macbook_Pro_M3_Space_Gray_PDP_Image_Position_1__GBEN_854be6b2-c1ef-4f82-91ef-065d0d92e7e7.webp', 'uploads/download.webp', 'https://youtu.be/tJPAjqFxNnI', 2, '2024-09-22 01:59:13'),
+(50, 'Pc', 'Lenovo', '321', '9999.99', 20, 'uploads/mba13-spacegray-config-202402.jpeg', 'uploads/Macbook_Pro_M3_Space_Gray_PDP_Image_Position_1__GBEN_854be6b2-c1ef-4f82-91ef-065d0d92e7e7.webp', 'uploads/download.webp', 'https://youtu.be/tJPAjqFxNnI', 3, '2024-09-22 02:01:40'),
+(59, 'Pc', 'Lenovo', '123', '9999.99', 20, 'uploads/product_66ef0df2c388b3.63559020.jpeg', 'uploads/product_66ef0df2c3ac13.24369374.webp', 'uploads/product_66ef0df2c3cda5.89635663.webp', 'https://youtu.be/tJPAjqFxNnI', 1, '2024-09-22 02:18:26'),
+(68, 'Pc', 'Lenovo', '123', '9999.99', 20, 'uploads/66efb9daadc6f_Macbook_Pro_M3_Space_Gray_PDP_Image_Position_1__GBEN_854be6b2-c1ef-4f82-91ef-065d0d92e7e7.webp', 'uploads/66efb9dab11e5_mba13-spacegray-config-202402.jpeg', 'uploads/66efb9dab3c35_download.webp', 'https://youtu.be/tJPAjqFxNnI', 2, '2024-09-22 14:31:56'),
+(69, 'Pc', 'Lenovo', '123', '9999.99', 20, 'uploads/mba13-spacegray-config-202402.jpeg', 'uploads/Macbook_Pro_M3_Space_Gray_PDP_Image_Position_1__GBEN_854be6b2-c1ef-4f82-91ef-065d0d92e7e7.webp', 'uploads/download.webp', 'https://youtu.be/tJPAjqFxNnI', 2, '2024-09-22 14:32:47'),
+(70, 'Pc', 'Lenovo', '2132', '9999.99', 20, 'uploads/66efba28ed30b_Macbook_Pro_M3_Space_Gray_PDP_Image_Position_1__GBEN_854be6b2-c1ef-4f82-91ef-065d0d92e7e7.webp', 'uploads/66efba28f1b11_mba13-spacegray-config-202402.jpeg', 'uploads/66efba28f2993_download.webp', 'https://youtu.be/tJPAjqFxNnI', 2, '2024-09-22 14:33:15');
 
 -- --------------------------------------------------------
 
@@ -135,7 +165,7 @@ CREATE TABLE `product` (
 CREATE TABLE `product_review` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `product_id` char(4) NOT NULL,
+  `product_id` int(11) NOT NULL,
   `rating` int(11) NOT NULL,
   `review` text DEFAULT NULL,
   `created_at` datetime NOT NULL
@@ -198,7 +228,7 @@ CREATE TABLE password_resets (
 CREATE TABLE `wishlist` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `product_id` char(4) NOT NULL,
+  `product_id` int(11) NOT NULL,
   `created_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
