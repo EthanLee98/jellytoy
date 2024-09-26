@@ -53,10 +53,21 @@
         </div>
         <div class="custom-footer-bottom">
             <p>Copyright © JellyToy All Rights Reserved. @ <?= date('Y') ?></p>
-            
+
         </div>
     </footer>
+    <script>
+        var loader = document.getElementById("preloader");
+        window.addEventListener("load", function() {
+            setTimeout(function() {
+                loader.style.transform = "translateY(-100%)";
+            }, 150);
 
+            setTimeout(function() {
+                loader.style.display = "none";
+            }, 1000);
+        });
+    </script>
     </body>
 
     </html>

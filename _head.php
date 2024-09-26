@@ -5,15 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $_title ?? 'Untitled' ?></title>
-    <link rel="shortcut icon" href="/jellytoy/images/favicon/android-chrome-192x192.png">
-    <link rel="stylesheet" type="text/css" href="/jellytoy/css/_head.css">
-    <link rel="stylesheet" type="text/css" href="/jellytoy/css/_foot.css">
+    <link rel="shortcut icon" href="/images/favicon/android-chrome-192x192.png">
+    <link rel="stylesheet" type="text/css" href="/css/_head.css">
+    <link rel="stylesheet" type="text/css" href="/css/_foot.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="js/app.js"></script>
+
+    <style>
+        #preloader {
+            background: black url(/images/preloader.gif) no-repeat center center;
+            height: 100vh;
+            width: 100%;
+            position: fixed;
+            z-index: 100;
+            transition: transform 0.5s ease-in-out;
+        }
+    </style>
 </head>
 
 <body>
+    <div id="preloader"></div>
+
     <!-- Flash message -->
     <div id="info"><?= temp('info') ?></div>
 
@@ -23,10 +36,10 @@
         </div>
         <nav class="custom-navbar">
             <div class="custom-logo">
-                <a href="/jellytoy/index.php">JellyToy</a>
+                <a href="/index.php">JellyToy</a>
             </div>
             <ul class="custom-nav-links">
-                <li><a href="/jellytoy/index.php">Home</a></li>
+                <li><a href="/index.php">Home</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
@@ -47,12 +60,12 @@
                             <?php endif; ?>
                             <span><?php echo $_SESSION['user']['name']; ?></span>
                             <ul class="header-dropdown-menu">
-                                <li><a href="/jellytoy/userProfile.php">My Profile</a></li>
-                                <li><a href="/jellytoy/logout.php">Logout</a></li>
+                                <li><a href="/userProfile.php">My Profile</a></li>
+                                <li><a href="/logout.php">Logout</a></li>
                             </ul>
                         </div>
                     <?php else: ?>
-                        <a href="/jellytoy/login.php" class="auth-link">Login</a> / <a href="/jellytoy/user/registerMember.php" class="auth-link">Register</a>
+                        <a href="/login.php" class="auth-link">Login</a> / <a href="/user/registerMember.php" class="auth-link">Register</a>
                     <?php endif; ?>
                 </div>
             </div>
@@ -61,7 +74,7 @@
 
 
 
-    <script src="/jellytoy/js/_head.js"></script>
+    <script src="/js/_head.js"></script>
 
 
     <main>

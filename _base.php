@@ -234,13 +234,13 @@ function err($key) {
 $_user = $_SESSION['user'] ?? null;
 
 // Login user
-function login($user, $url = '/jellytoy') {
+function login($user, $url = '/') {
     $_SESSION['user'] = $user;
     redirect($url);
 }
 
 // Logout user
-function logout($url = '/jellytoy') {
+function logout($url = '/') {
     unset($_SESSION['user']);
     redirect($url);
 }
@@ -259,7 +259,7 @@ function auth(...$roles) {
         }
     }
     
-    redirect('/jellytoy/login.php');
+    redirect('/login.php');
 }
 
 // ============================================================================
