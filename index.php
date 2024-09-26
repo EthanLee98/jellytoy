@@ -7,7 +7,7 @@ include '_base.php';
 
 // ----------------------------------------------------------------------------
 
-$_title = 'Index';
+$_title = 'JellyToy - Home';
 include '_head.php';
 ?>
 

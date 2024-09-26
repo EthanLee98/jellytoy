@@ -12,6 +12,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="js/app.js"></script>
 
+    <?php
+    $current_page = basename($_SERVER['PHP_SELF'], '.php');
+    $specific_css = '/css/' . $current_page . '.css';
+    echo '<link rel="stylesheet" href="' . htmlspecialchars($specific_css) . '">';
+    ?>
+
     <style>
         #preloader {
             background: black url(/images/preloader.gif) no-repeat center center;
@@ -40,7 +46,7 @@
             </div>
             <ul class="custom-nav-links">
                 <li><a href="/index.php">Home</a></li>
-                <li><a href="/product/list.php">Product</a></li>
+                <li><a href="/product/product_list.php">Product</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
             <div class="custom-search-cart">
