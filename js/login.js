@@ -1,4 +1,7 @@
-$(document).ready(function() {
+$(document).ready(function () {
+    // Clear form data on page load
+    $('#loginForm')[0].reset(); // Reset form fields
+
     // Display error messages
     if (window.errors) {
         if (window.errors.email) {
@@ -13,7 +16,7 @@ $(document).ready(function() {
     }
 
     // Prevent form submission if there are errors
-    $('#loginForm').on('submit', function(e) {
+    $('#loginForm').on('submit', function (e) {
         let hasError = false;
 
         // Clear previous error messages
@@ -22,11 +25,11 @@ $(document).ready(function() {
 
         // Check for empty fields
         if ($('#email').val().trim() === '') {
-            $('#email-error').text('Required');
+            $('#email-error').text('Email address are required!');
             hasError = true;
         }
         if ($('#password').val().trim() === '') {
-            $('#password-error').text('Required');
+            $('#password-error').text('Password cannot be blank!');
             hasError = true;
         }
 

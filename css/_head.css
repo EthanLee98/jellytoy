@@ -1,0 +1,233 @@
+/* Font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body,
+input,
+button,
+textarea,
+select {
+    font: 16px 'Roboto', sans-serif;
+}
+
+body {
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+/* Promo bar */
+.custom-promo-bar {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+}
+
+/* Header container */
+.custom-header-container {
+    width: 100%;
+    background-color: #fff;
+}
+
+/* Navbar */
+.custom-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 50px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.custom-logo a {
+    font-size: 24px;
+    font-weight: 700;
+    text-decoration: none;
+    color: black;
+}
+
+/* Navigation links */
+.custom-nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.custom-nav-links li {
+    display: inline;
+}
+
+.custom-nav-links a {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+    padding: 10px;
+    transition: color 0.3s ease;
+}
+
+.custom-nav-links a:hover {
+    color: #3498db;
+}
+
+/* Search and cart icons */
+.custom-search-cart {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.custom-search-form {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    /* Rounded corners */
+    overflow: hidden;
+}
+
+.custom-search-form input {
+    border: none;
+    padding: 8px 15px;
+    width: 200px;
+    border-radius: 30px;
+    /* Match rounded style */
+    outline: none;
+}
+
+.custom-search-form input:focus {
+    outline: 2px solid #3498db;
+    /* Blue outline on focus */
+    transition: outline 0.2s ease-in;
+}
+
+.custom-search-form button {
+    background-color: transparent;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 8px 15px;
+    color: #999;
+}
+
+.custom-search-form button:hover {
+    color: #3498db;
+    /* Change color on hover */
+}
+
+.custom-search-cart a {
+    font-size: 18px;
+    color: black;
+    text-decoration: none;
+}
+
+.custom-search-cart a:hover {
+    color: #3498db;
+}
+
+/* Auth Links (Login/Register) */
+.auth-link {
+    color: black;
+    font-weight: 500;
+    margin-left: 20px;
+    text-decoration: none;
+}
+
+.auth-link:hover {
+    color: #3498db;
+}
+
+
+
+
+/* User Profile */
+.header-user-profile {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-left: 20px;
+    min-width: 150px; /* To prevent dropdown shrinking */
+}
+
+.header-user-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.header-dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 150px;
+    list-style: none;
+    padding: 10px 0;
+    z-index: 100;
+    min-width: 150px;
+    max-width: 200px; /* Ensuring dropdown stays within reasonable width */
+}
+
+.header-dropdown-menu li {
+    padding: 10px 15px;
+}
+
+.header-dropdown-menu li a {
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+}
+
+.header-dropdown-menu li:hover {
+    background-color: #3498db;
+}
+
+.header-dropdown-menu li a:hover {
+    color: white;
+}
+
+/* Flash Message remains unchanged */
+#info {
+    position: fixed;
+    color: #fff;
+    background: #e74c3c;
+    border: 1px solid #c0392b;
+    border-radius: 5px;
+    padding: 10px 20px;
+    left: 50%;
+    translate: -50% 0;
+    z-index: 999;
+    top: -100px;
+    opacity: 0;
+}
+
+#info:not(:empty) {
+    animation: fade 5s;
+}
+
+@keyframes fade {
+    0% {
+        top: -100px;
+        opacity: 0;
+    }
+
+    10% {
+        top: 100px;
+        opacity: 1;
+    }
+
+    90% {
+        top: 100px;
+        opacity: 1;
+    }
+
+    100% {
+        top: -100px;
+        opacity: 0;
+    }
+}
