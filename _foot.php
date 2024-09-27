@@ -56,6 +56,9 @@
 
         </div>
     </footer>
+
+    <script src="/lib/jquery.min.js"></script>
+    <script src="/js/app.js"></script>
     <script>
         var loader = document.getElementById("preloader");
         window.addEventListener("load", function() {

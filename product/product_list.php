@@ -36,7 +36,7 @@ include '../_head.php';
             </form>
                 
             <img src="/images/products/<?= $p->photo1 ?>"
-                 data-get="/product/detail.php?id=<?= $p->id ?>">
+                 data-get="/product/product_detail.php?id=<?= $p->id ?>">
 
             <div><?= $p->name ?> | RM <?= $p->price ?></div>
         </div>
