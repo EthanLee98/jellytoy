@@ -43,10 +43,5 @@ include '../_head.php';
     <?php endforeach ?>
 </div>
 
-<script>
-    // TODO
-    $('select').on('change', e => e.target.form.submit());
-</script>
-
 <?php
 include '../_foot.php';

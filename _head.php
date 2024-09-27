@@ -46,7 +46,7 @@
             <ul class="custom-nav-links">
                 <li><a href="/index.php">Home</a></li>
                 <li><a href="/product/product_list.php">Product</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="/order/cart.php">Cart</a></li>
             </ul>
             <div class="custom-search-cart">
                 <form action="/search.php" method="GET" class="custom-search-form">

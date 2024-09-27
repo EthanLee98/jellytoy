@@ -19,7 +19,7 @@ if (is_post()) {
 
 // ----------------------------------------------------------------------------
 
-$_title = 'Order | Shopping Cart';
+$_title = 'JellyToy - Shopping Cart';
 include '../_head.php';
 ?>
 
@@ -69,7 +69,7 @@ include '../_head.php';
             </td>
             <td class="right">
                 <?= sprintf('%.2f', $subtotal) ?>
-                <img src="/products/<?= $p->photo ?>" class="popup">
+                <img src="/images/products/<?= $p->photo1 ?>" class="popup">
             </td>
         </tr>
     <?php endforeach ?>

@@ -60,7 +60,7 @@ include '../_head.php';
 </table>
 
 <p>
-    <button data-get="list.php">List</button>
+    <button data-get="product_list.php">List</button>
 </p>
 
 <script>

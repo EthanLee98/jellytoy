@@ -71,6 +71,13 @@
             }, 1000);
         });
     </script>
-    </body>
 
-    </html>
+    <!-- Link to the JS file that has the same name with PHP file -->
+    <?php
+    $current_page = basename($_SERVER['PHP_SELF'], '.php');
+    $specific_css = '/js/' . $current_page . '.js';
+    echo '<script src="' . htmlspecialchars($specific_css) . '"></script>';
+    ?>
+    
+</body>
+</html>
