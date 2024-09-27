@@ -64,7 +64,7 @@
     window.addEventListener("load", function() {
             setTimeout(function() {
                 loader.style.transform = "translateY(-100%)";
-            }, <?php echo rand(150, 1000); ?>);
+            }, <?php echo rand(150, 500); ?>);
 
             setTimeout(function() {
                 loader.style.display = "none";
