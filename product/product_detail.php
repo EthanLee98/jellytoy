@@ -15,25 +15,16 @@ $id  = req('id');
 $stm = $_db->prepare('SELECT * FROM product WHERE id = ?');
 $stm->execute([$id]);
 $p = $stm->fetch();
-if (!$p) redirect('list.php');
+if (!$p) redirect('product_list.php');
 
 // ----------------------------------------------------------------------------
 
-$_title = 'Product | Detail';
+$_title = 'JellyToy - Product Detail';
 include '../_head.php';
 ?>
 
-<style>
-    #photo {
-        display: block;
-        border: 1px solid #333;
-        width: 200px;
-        height: 200px;
-    }
-</style>
-
 <p>
-    <img src="/products/<?= $p->photo ?>" id="photo">
+    <img src="/images/products/<?= $p->photo1 ?>" id="photo">
 </p>
 
 <table class="table detail">

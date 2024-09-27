@@ -61,10 +61,10 @@
     <script src="/js/app.js"></script>
     <script>
         var loader = document.getElementById("preloader");
-        window.addEventListener("load", function() {
+    window.addEventListener("load", function() {
             setTimeout(function() {
                 loader.style.transform = "translateY(-100%)";
-            }, 150);
+            }, <?php echo rand(150, 1000); ?>);
 
             setTimeout(function() {
                 loader.style.display = "none";
