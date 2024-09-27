@@ -12,6 +12,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="js/app.js"></script>
 
+    <!-- Link to the CSS file that has the same name with PHP file -->
     <?php
     $current_page = basename($_SERVER['PHP_SELF'], '.php');
     $specific_css = '/css/' . $current_page . '.css';

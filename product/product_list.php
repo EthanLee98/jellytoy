@@ -35,7 +35,7 @@ include '../_head.php';
                 <?= html_select('unit', $_units, '') ?>
             </form>
                 
-            <img src="/products/<?= $p->photo ?>"
+            <img src="/images/products/<?= $p->photo1 ?>"
                  data-get="/product/detail.php?id=<?= $p->id ?>">
 
             <div><?= $p->name ?> | RM <?= $p->price ?></div>

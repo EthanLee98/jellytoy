@@ -149,12 +149,12 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id`, `name`, `brand`, `description`, `price`, `stock`, `photo1`, `photo2`, `photo3`, `video_url`, `category_id`, `date_created`) VALUES
-(49, 'Pc', 'Lenovo', '123', '9999.99', 20, 'uploads/mba13-spacegray-config-202402.jpeg', 'uploads/Macbook_Pro_M3_Space_Gray_PDP_Image_Position_1__GBEN_854be6b2-c1ef-4f82-91ef-065d0d92e7e7.webp', 'uploads/download.webp', 'https://youtu.be/tJPAjqFxNnI', 2, '2024-09-22 01:59:13'),
-(50, 'Pc', 'Lenovo', '321', '9999.99', 20, 'uploads/mba13-spacegray-config-202402.jpeg', 'uploads/Macbook_Pro_M3_Space_Gray_PDP_Image_Position_1__GBEN_854be6b2-c1ef-4f82-91ef-065d0d92e7e7.webp', 'uploads/download.webp', 'https://youtu.be/tJPAjqFxNnI', 3, '2024-09-22 02:01:40'),
-(59, 'Pc', 'Lenovo', '123', '9999.99', 20, 'uploads/product_66ef0df2c388b3.63559020.jpeg', 'uploads/product_66ef0df2c3ac13.24369374.webp', 'uploads/product_66ef0df2c3cda5.89635663.webp', 'https://youtu.be/tJPAjqFxNnI', 1, '2024-09-22 02:18:26'),
-(68, 'Pc', 'Lenovo', '123', '9999.99', 20, 'uploads/66efb9daadc6f_Macbook_Pro_M3_Space_Gray_PDP_Image_Position_1__GBEN_854be6b2-c1ef-4f82-91ef-065d0d92e7e7.webp', 'uploads/66efb9dab11e5_mba13-spacegray-config-202402.jpeg', 'uploads/66efb9dab3c35_download.webp', 'https://youtu.be/tJPAjqFxNnI', 2, '2024-09-22 14:31:56'),
-(69, 'Pc', 'Lenovo', '123', '9999.99', 20, 'uploads/mba13-spacegray-config-202402.jpeg', 'uploads/Macbook_Pro_M3_Space_Gray_PDP_Image_Position_1__GBEN_854be6b2-c1ef-4f82-91ef-065d0d92e7e7.webp', 'uploads/download.webp', 'https://youtu.be/tJPAjqFxNnI', 2, '2024-09-22 14:32:47'),
-(70, 'Pc', 'Lenovo', '2132', '9999.99', 20, 'uploads/66efba28ed30b_Macbook_Pro_M3_Space_Gray_PDP_Image_Position_1__GBEN_854be6b2-c1ef-4f82-91ef-065d0d92e7e7.webp', 'uploads/66efba28f1b11_mba13-spacegray-config-202402.jpeg', 'uploads/66efba28f2993_download.webp', 'https://youtu.be/tJPAjqFxNnI', 2, '2024-09-22 14:33:15');
+(49, 'Pc', 'Lenovo', '123', '9999.99', 20, 'mba13-spacegray-config-202402.jpeg', 'Macbook_Pro_M3_Space_Gray_PDP_Image_Position_1__GBEN_854be6b2-c1ef-4f82-91ef-065d0d92e7e7.webp', 'download.webp', 'https://youtu.be/tJPAjqFxNnI', 2, '2024-09-22 01:59:13'),
+(50, 'Pc', 'Lenovo', '321', '9999.99', 20, 'mba13-spacegray-config-202402.jpeg', 'Macbook_Pro_M3_Space_Gray_PDP_Image_Position_1__GBEN_854be6b2-c1ef-4f82-91ef-065d0d92e7e7.webp', 'download.webp', 'https://youtu.be/tJPAjqFxNnI', 3, '2024-09-22 02:01:40'),
+(59, 'Pc', 'Lenovo', '123', '9999.99', 20, 'product_66ef0df2c388b3.63559020.jpeg', 'product_66ef0df2c3ac13.24369374.webp', 'product_66ef0df2c3cda5.89635663.webp', 'https://youtu.be/tJPAjqFxNnI', 1, '2024-09-22 02:18:26'),
+(68, 'Pc', 'Lenovo', '123', '9999.99', 20, '66efb9daadc6f_Macbook_Pro_M3_Space_Gray_PDP_Image_Position_1__GBEN_854be6b2-c1ef-4f82-91ef-065d0d92e7e7.webp', '66efb9dab11e5_mba13-spacegray-config-202402.jpeg', '66efb9dab3c35_download.webp', 'https://youtu.be/tJPAjqFxNnI', 2, '2024-09-22 14:31:56'),
+(69, 'Pc', 'Lenovo', '123', '9999.99', 20, 'mba13-spacegray-config-202402.jpeg', 'Macbook_Pro_M3_Space_Gray_PDP_Image_Position_1__GBEN_854be6b2-c1ef-4f82-91ef-065d0d92e7e7.webp', 'download.webp', 'https://youtu.be/tJPAjqFxNnI', 2, '2024-09-22 14:32:47'),
+(70, 'Pc', 'Lenovo', '2132', '9999.99', 20, '66efba28ed30b_Macbook_Pro_M3_Space_Gray_PDP_Image_Position_1__GBEN_854be6b2-c1ef-4f82-91ef-065d0d92e7e7.webp', '66efba28f1b11_mba13-spacegray-config-202402.jpeg', '66efba28f2993_download.webp', 'https://youtu.be/tJPAjqFxNnI', 2, '2024-09-22 14:33:15');
 
 -- --------------------------------------------------------
 
