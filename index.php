@@ -30,4 +30,4 @@ include '_head.php';
 </table>
 
 <?php
-include '_foot1.php';
+include '_foot.php';
