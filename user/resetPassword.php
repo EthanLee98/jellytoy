@@ -1,5 +1,5 @@
 <?php
-include '../_base.php'; // Include base functions (database, utilities, etc.)
+include '/_base.php'; // Include base functions (database, utilities, etc.)
 
 // Initialize variables for error and success messages
 $_err = [];
@@ -58,37 +58,39 @@ if ($token) {
 // Page setup and form display
 // ----------------------------------------------------------------------------
 $_title = 'User | Reset Password';
-include '../_head.php'; // Include header file
+include '/_head.php'; // Include header file
 ?>
 
-<div class="container">
-    <h2>Reset Password</h2>
+<link rel="stylesheet" href="/css/resetPassword.css">
+
+<div class="reset-password-container">
 
     <!-- Display success message -->
     <?php if (!empty($success)): ?>
-        <p class="success"><?php echo $success; ?></p>
+        <p class="reset-password-success"><?php echo $success; ?></p>
     <?php else: ?>
 
         <!-- Display errors -->
         <?php if (!empty($_err['token'])): ?>
-            <p class="err"><?php echo $_err['token']; ?></p>
+            <p class="reset-password-error"><?php echo $_err['token']; ?></p>
         <?php endif; ?>
 
         <!-- Reset Password Form -->
         <?php if (empty($_err['token'])): ?>
             <form id="resetPasswordForm" method="post">
+                <h1 id="resetPasswordTitle"><?= $_title ?></h1>
                 <div>
-                    <label for="password">New Password:</label>
-                    <input type="password" id="password" name="password" required>
-                    <span id="passwordError" class="err"><?php echo isset($_err['password']) ? $_err['password'] : ''; ?></span>
+                    <label for="resetPasswordInput">New Password:</label>
+                    <input type="password" id="resetPasswordInput" class="reset-password-input" name="password" required>
+                    <span id="resetPasswordError" class="reset-password-error"><?php echo isset($_err['password']) ? $_err['password'] : ''; ?></span>
                 </div>
                 <div>
-                    <label for="confirm_password">Confirm Password:</label>
-                    <input type="password" id="confirm_password" name="confirm_password" required>
-                    <span id="confirmPasswordError" class="err"><?php echo isset($_err['confirm_password']) ? $_err['confirm_password'] : ''; ?></span>
+                    <label for="resetConfirmPasswordInput">Confirm Password:</label>
+                    <input type="password" id="resetConfirmPasswordInput" class="reset-password-input" name="confirm_password" required>
+                    <span id="resetConfirmPasswordError" class="reset-password-error"><?php echo isset($_err['confirm_password']) ? $_err['confirm_password'] : ''; ?></span>
                 </div>
                 <div>
-                    <button type="submit">Reset Password</button>
+                    <button type="submit" id="resetPasswordSubmitBtn">Reset Password</button>
                 </div>
             </form>
         <?php endif; ?>
@@ -99,29 +101,29 @@ include '../_head.php'; // Include header file
 <!-- jQuery for validation and form handling -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-$(document).ready(function() {
-    $('#resetPasswordForm').on('submit', function(event) {
-        $('#passwordError').text(''); // Clear previous errors
-        $('#confirmPasswordError').text(''); // Clear previous errors
+    $(document).ready(function() {
+        $('#resetPasswordForm').on('submit', function(event) {
+            $('#resetPasswordError').text(''); // Clear previous errors
+            $('#resetConfirmPasswordError').text(''); // Clear previous errors
 
-        var password = $('#password').val();
-        var confirm_password = $('#confirm_password').val();
+            var password = $('#resetPasswordInput').val();
+            var confirm_password = $('#resetConfirmPasswordInput').val();
 
-        // Password validation: Check length
-        if (password.length < 8) {
-            event.preventDefault(); // Prevent form submission
-            $('#passwordError').text('Password must be at least 8 characters long.');
-        }
+            // Password validation: Check length
+            if (password.length < 8) {
+                event.preventDefault(); // Prevent form submission
+                $('#resetPasswordError').text('Password must be at least 8 characters long.');
+            }
 
-        // Check if passwords match
-        if (password !== confirm_password) {
-            event.preventDefault(); // Prevent form submission
-            $('#confirmPasswordError').text('Passwords do not match.');
-        }
+            // Check if passwords match
+            if (password !== confirm_password) {
+                event.preventDefault(); // Prevent form submission
+                $('#resetConfirmPasswordError').text('Passwords do not match.');
+            }
+        });
     });
-});
 </script>
 
 <?php
-include '../_foot.php'; // Include footer file
+include '/_foot.php'; // Include footer file
 ?>

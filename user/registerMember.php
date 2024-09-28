@@ -1,8 +1,9 @@
 <?php
-include '../_base.php'; // Include the base file with helper functions
+include '/_base.php'; // Include the base file with helper functions
 
 // Check for expired tokens and delete associated users
-function cleanup_expired_tokens() {
+function cleanup_expired_tokens()
+{
     global $_db;
 
     // Get the current time
@@ -47,8 +48,8 @@ if (is_post()) {
     } elseif (!is_unique($email, 'user', 'email')) {
         $_err['email'] = 'Email is already taken';
     }
-    if (strlen($password) < 6) {
-        $_err['password'] = 'Password must be at least 6 characters';
+    if (!is_strong_password($password)) {
+        $_err['password'] = 'Password must be at least 8 characters, include uppercase, lowercase, digit, and symbol';
     }
     if ($password !== $confirm_password) {
         $_err['confirm_password'] = 'Passwords do not match';
@@ -67,16 +68,16 @@ if (is_post()) {
 
         // Generate a unique token and set expiration time
         $token = bin2hex(random_bytes(32));
-        $expiry = date('Y-m-d H:i:s', strtotime('+30 seconds'));
+        $expiry = date('Y-m-d H:i:s', strtotime('+60 seconds'));
 
         // Store the token and its expiry in the token table
         $token_stmt = $_db->prepare("INSERT INTO token (user_id, token, expire) VALUES (?, ?, ?)");
         $token_stmt->execute([$user_id, $token, $expiry]);
 
         // Send email with the activation link
-        $activation_link = base("jellytoy/user/activate.php?token=$token");
+        $activation_link = base("user/activate.php?token=$token");
         $subject = "Activate your account";
-        $message = "Hi $name, \n\nPlease click the link below to activate your account: \n$activation_link \n\nThis link will expire in 30 seconds.";
+        $message = "Hi $name, \n\nPlease click the link below to activate your account: \n$activation_link \n\nThis link will expire within 60 seconds.";
 
         $mail = get_mail();
         $mail->addAddress($email);
@@ -85,36 +86,59 @@ if (is_post()) {
 
         try {
             $mail->send();
-            echo "Registration successful! Please check your email to activate your account.";
+            temp('info','Registration successful! Please check your email to activate your account.');
+            
         } catch (Exception $e) {
             echo "Failed to send activation email. Mailer Error: {$mail->ErrorInfo}";
         }
     }
 }
 
-$_title = 'Register Member';
-include '../_head.php';
-?>
+function is_strong_password($password)
+{
+    return strlen($password) >= 8 && // Minimum 8 characters
+        preg_match('/[A-Z]/', $password) && // Contain uppercase
+        preg_match('/[a-z]/', $password) && // Contain lowercase
+        preg_match('/[0-9]/', $password) && // Contain digit
+        preg_match('/[_\W]/', $password); // Contain symbol
+}
 
-<form method="POST" action="">
-    <h2>Register</h2>
+$_title = 'Register Member';
+include '/_head.php';
+?>
+<link rel="stylesheet" type="text/css" href="/css/registerMember.css">
+<link rel="stylesheet" type="text/css" href="/css/jquery-ui.css"> <!-- Optional: for jQuery UI if needed -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome CDN -->
+
+<form method="POST" action="" id="registerForm">
+    <h1 id="registerTitle"><?= $_title ?></h1>
+
     <label for="name">Name</label>
-    <?php html_text('name', 'required'); ?>
-    <?php err('name'); ?>
+    <?php html_text('name', 'class="register-input" required'); ?>
+    <div id="name-error" class="error-msg"><?= err('name'); ?></div>
 
     <label for="email">Email</label>
-    <?php html_text('email', 'required'); ?>
-    <?php err('email'); ?>
+    <?php html_text('email', 'class="register-input" required'); ?>
+    <div id="email-error" class="error-msg"><?= err('email'); ?></div>
 
     <label for="password">Password</label>
-    <?php html_password('password', 'required'); ?>
-    <?php err('password'); ?>
+    <div class="password-toggle">
+        <?php html_password('password', 'class="register-input" required id="password"'); ?>
+        <span class="password-toggle-icon" id="togglePassword"><i class="icon-eye"></i></span>
+    </div>
+    <div id="password-error" class="error-msg"><?= err('password'); ?></div>
 
     <label for="confirm_password">Confirm Password</label>
-    <?php html_password('confirm_password', 'required'); ?>
-    <?php err('confirm_password'); ?>
+    <div class="password-toggle">
+        <?php html_password('confirm_password', 'class="register-input" required id="confirm_password"'); ?>
+        <span class="password-toggle-icon" id="toggleConfirmPassword"><i class="icon-eye"></i></span>
+    </div>
+    <div id="confirm-password-error" class="error-msg"><?= err('confirm_password'); ?></div>
 
-    <button type="submit">Register</button>
+    <button type="submit" id="registerButton">Register</button>
 </form>
 
-<?php include '../_foot.php'; ?>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/js/register.js"></script> <!-- External jQuery file -->
+
+<?php include '/_foot.php'; ?>

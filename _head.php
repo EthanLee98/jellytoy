@@ -65,7 +65,7 @@
                             <?php endif; ?>
                             <span><?php echo $_SESSION['user']['name']; ?></span>
                             <ul class="header-dropdown-menu">
-                                <li><a href="/userProfile.php">My Profile</a></li>
+                                <li><a href="/user/userProfile.php">My Profile</a></li>
                                 <li><a href="/logout.php">Logout</a></li>
                             </ul>
                         </div>

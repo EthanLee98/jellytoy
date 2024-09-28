@@ -196,6 +196,8 @@ CREATE TABLE `user` (
   `password` varchar(255) NOT NULL,
   `name` varchar(100) NOT NULL,
   `photo` varchar(255) DEFAULT NULL,
+  `delivery_address` varchar(255) DEFAULT NULL,
+  `phone_number` varchar(15) DEFAULT NULL,
   `role` enum('Admin','Member') NOT NULL,
   `login_attempts` int(11) DEFAULT 0,
   `status` enum('active','inactive') DEFAULT'inactive',

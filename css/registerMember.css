@@ -1,0 +1,89 @@
+/* Center the form */
+#registerForm {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+    margin: 50px auto; /* Add margin to create space above and below */
+}
+
+/* Title */
+#registerTitle {
+    text-align: center;
+    font-size: 24px; /* Make the title bigger */
+    margin-bottom: 20px;
+}
+
+/* Labels */
+#registerForm label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+/* Input Fields */
+.register-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+/* Focus State for Input Fields */
+.register-input:focus {
+    border-color: #549DFF;
+    outline: none;
+    box-shadow: 0px 0px 5px rgba(84, 157, 255, 0.5);
+}
+
+/* Register Button */
+#registerButton {
+    width: 100%;
+    padding: 10px;
+    background-color: #549DFF;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Button Hover State */
+#registerButton:hover {
+    background-color: #417fcc;
+}
+
+/* Error Messages */
+#error {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 15px; /* Space below the error message */
+}
+
+/* Password Visibility Toggle */
+.password-toggle {
+    position: relative;
+}
+
+.password-toggle-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.error-msg {
+    color: red; /* Error messages in red */
+    font-size: 14px;
+    margin-bottom: 15px; /* Space below the error message */
+}
+

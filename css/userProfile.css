@@ -1,0 +1,121 @@
+.profile-container {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.sidebar {
+    width: 25%;
+    background-color: white;
+    padding: 20px;
+    border-right: 1px solid #e0e0e0;
+}
+
+.profile-info {
+    text-align: center;
+}
+
+.profile-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.username {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.edit-profile {
+    font-size: 14px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.profile-menu {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.profile-menu li {
+    margin: 10px 0;
+}
+
+.profile-menu a {
+    text-decoration: none;
+    font-size: 16px;
+    color: #333;
+}
+
+.profile-menu a.active {
+    color: #e74c3c;
+}
+
+.profile-content {
+    width: 75%;
+    padding: 20px;
+}
+
+.profile-title {
+    font-size: 22px;
+}
+
+.profile-description {
+    color: #888;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.edit-link {
+    font-size: 14px;
+    color: #007bff;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+.save-button {
+    background-color: #e74c3c;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.save-button:hover {
+    background-color: #c0392b;
+}
+
+.profile-picture {
+    display: flex;
+    align-items: center;
+}
+
+.upload-picture {
+    margin-left: 15px;
+}
+
+.upload-info {
+    font-size: 12px;
+    color: #888;
+    margin-left: 15px;
+}
