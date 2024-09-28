@@ -28,6 +28,9 @@ include '_head.php';
         <td>Member</td>
     </tr>
 </table>
+<table>
+    Testing
+</table>
 
 <?php
 include '_foot.php';
