@@ -2,7 +2,7 @@
     <section class="footer">
         <div class="footer-row">
             <div class="footer-col">
-                <h4>Info</h4>
+                <h4 class="footer-title">Info</h4>
                 <ul class="links">
                     <li><a href="#">About Us</a></li>
                     <li><a href="#">Compressions</a></li>
@@ -13,7 +13,7 @@
             </div>
 
             <div class="footer-col">
-                <h4>Explore</h4>
+                <h4 class="footer-title">Explore</h4>
                 <ul class="links">
                     <li><a href="#">Free Designs</a></li>
                     <li><a href="#">Latest Designs</a></li>
@@ -25,7 +25,7 @@
             </div>
 
             <div class="footer-col">
-                <h4>Legal</h4>
+                <h4 class="footer-title">Legal</h4>
                 <ul class="links">
                     <li><a href="#">Customer Agreement</a></li>
                     <li><a href="#">Privacy Policy</a></li>
@@ -38,7 +38,7 @@
 
             <!-- Contact Us -->
             <div class="footer-col">
-                <h4>Contact Us</h4>
+                <h4 class="footer-title">Contact Us</h4>
                 <p>
                     Your satisfaction. Our mission.
                 </p>
