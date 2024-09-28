@@ -33,5 +33,4 @@ include '_head.php';
 </table>
 
 <?php
-include '_foot.php';
-include '_foot.php';
+include '_foot1.php';
