@@ -19,7 +19,7 @@
 
     <style>
         #preloader {
-            background: black url(/images/preloader_alt.gif) no-repeat center center;
+            background: black url(/images/preloader.gif) no-repeat center center;
             height: 100vh;
             width: 100%;
             position: fixed;
