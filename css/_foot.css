@@ -1,107 +1,156 @@
-/* Footer Container */
-.custom-footer {
-    background-color: #111;
-    color: #fff;
-    padding: 50px 0;
-    font-family: 'Roboto', sans-serif;
-}
+/* Importing Google font - Open Sans */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
 
-.custom-footer-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Change to 4 columns to evenly distribute */
-    gap: 40px; /* Increased gap for better spacing */
-    padding: 0 50px;
-    max-width: 1200px; /* Limit the width for better alignment */
-    margin: 0 auto; /* Center the footer container */
-}
-
-/* Footer Titles */
-.footer-title {
-    font-weight: 700;
-    font-size: 18px; /* Slightly larger font size */
-    position: relative;
-    margin-bottom: 20px;
-}
-
-.footer-title::after {
-    content: '';
-    position: absolute;
-    width: 40px;
-    height: 2px;
-    background-color: #e74c3c;
-    left: 0;
-    bottom: -5px;
-}
-
-/* Footer Links */
-.custom-footer-list {
-    list-style: none;
+* {
+    margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
 }
 
-.custom-footer-list li {
-    margin-bottom: 12px; /* Increase space between items */
-}
-
-.custom-footer-list a {
-    color: #ccc;
-    text-decoration: none;
-    font-size: 15px; /* Increased font size */
-}
-
-.custom-footer-list a:hover {
-    color: #e74c3c;
-}
-
-/* Contact Section */
-.custom-footer-contact {
-    grid-column: 4; /* Place the contact column in the last grid */
-}
-
-/* Contact Icons */
-.custom-footer-contact li {
-    display: flex;
-    align-items: center;
-    font-size: 15px; /* Increased font size */
-}
-
-.custom-footer-contact i {
-    margin-right: 10px;
-    color: #e74c3c;
-}
-
-/* Embedded Map */
-.custom-footer-map {
-    margin-top: 20px;
-    border: 0;
-    border-radius: 5px;
+.footer {
+    margin-top: 50px;
+    position: relative;
     width: 100%;
-    height: 150px;
+    background: #10182F;
+}
+
+.footer .footer-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 3.5rem;
+    padding: 60px;
+}
+
+.footer-row .footer-col h4 {
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+.footer-col .links {
+    margin-top: 20px;
+}
+
+.footer-col .links li {
+    list-style: none;
+    margin-bottom: 10px;
+}
+
+.footer-col .links li a {
+    text-decoration: none;
+    color: #bfbfbf;
+}
+
+.footer-col .links li a:hover {
+    color: #fff;
+}
+
+.footer-col p {
+    margin: 20px 0;
+    color: #bfbfbf;
+    max-width: 300px;
+}
+
+.footer-col form {
+    display: flex;
+    gap: 5px;
+}
+
+.footer-col input {
+    height: 40px;
+    border-radius: 6px;
+    background: none;
+    width: 100%;
+    outline: none;
+    border: 1px solid #7489C6;
+    caret-color: #fff;
+    color: #fff;
+    padding-left: 10px;
+}
+
+.footer-col input::placeholder {
+    color: #ccc;
+}
+
+.footer-col form button {
+    background: #fff;
+    outline: none;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.2s ease;
+}
+
+.footer-col form button:hover {
+    background: #cecccc;
+}
+
+.footer-col .icons {
+    display: flex;
+    margin-top: 30px;
+    gap: 30px;
+    cursor: pointer;
+}
+
+.footer-col .icons i {
+    color: #afb6c7;
+}
+
+.footer-col .icons i:hover {
+    color: #fff;
+}
+
+.footer-map {
+    margin-top: 15px;
+    border-radius: 8px;
+}
+
+.links li a i {
+    margin-right: 8px;
+    vertical-align: middle;
 }
 
 /* Footer Bottom */
-.custom-footer-bottom {
+.footer-bottom {
     text-align: center;
-    padding: 20px 0;
     background-color: #000;
     border-top: 1px solid #333;
-    margin-top: 50px;
 }
 
-.custom-footer-bottom p {
+.footer-bottom p {
     margin: 0;
     font-size: 14px;
     color: #aaa;
 }
 
-/* Payment Icons */
-.custom-footer-payment img {
-    width: 50px;
-    margin: 0 10px;
-    opacity: 0.7;
-}
+@media (max-width: 768px) {
+    .footer {
+        position: relative;
+        bottom: 0;
+        left: 0;
+        transform: none;
+        width: 100%;
+        border-radius: 0;
+    }
 
-.custom-footer-payment img:hover {
-    opacity: 1;
-    transition: opacity 0.3s ease;
+    .footer .footer-row {
+        padding: 20px;
+        gap: 1rem;
+    }
+
+    .footer-col form {
+        display: block;
+    }
+
+    .footer-col form :where(input, button) {
+        width: 100%;
+    }
+
+    .footer-col form button {
+        margin: 10px 0 0 0;
+    }
 }
