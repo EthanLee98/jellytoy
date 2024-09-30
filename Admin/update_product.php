@@ -1,5 +1,4 @@
 <?php
-// Include the database connection file
 include 'connectdb.php';
 
 // Fetch the product to be updated
@@ -53,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             foreach ($_FILES['images']['tmp_name'] as $index => $tmp_name) {
                 if ($_FILES['images']['error'][$index] === UPLOAD_ERR_OK) {
                     $file_name = basename($_FILES['images']['name'][$index]);
-                    $target_dir = "uploads/"; // Directory where images will be saved
+                    $target_dir = "../images/products/"; // Directory where images will be saved
                     $target_file = $target_dir . $file_name;
 
                     // Move the uploaded file to the target directory
@@ -62,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         $image_column = "photo" . ($index + 1); // Assuming photo1, photo2, photo3...
                         $update_query = "UPDATE product SET $image_column = ? WHERE id = ?";
                         $update_stmt = $conn->prepare($update_query);
-                        $update_stmt->bind_param("si", $target_file, $id);
+                        $update_stmt->bind_param("si", $file_name, $id);
                         $update_stmt->execute();
                         $update_stmt->close();
                     }

@@ -1,4 +1,3 @@
-    </main>
     <section class="footer">
         <div class="footer-row">
             <div class="footer-col">
@@ -39,13 +38,14 @@
             <!-- Contact Us -->
             <div class="footer-col">
                 <h4 class="footer-title">Contact Us</h4>
+                <div class="logo_foot"><a href="/"><img src="/images/logo_text.png" alt="logo" width="200px"></a></div>
                 <p>
                     Your satisfaction. Our mission.
                 </p>
                 <ul class="links">
                     <li><a href="https://www.google.com/maps?q=419+State+414+Rte+Beaver+Dams,+New+York+(NY),+14812,+USA" target="_blank"><i class="fas fa-map-marker-alt"></i> 419 State 414 Rte Beaver Dams, New York (NY), 14812, USA</a></li>
                     <li><a href="tel:+16079368058"><i class="fas fa-phone"></i> (607) 936-8058</a></li>
-                    <li><a href="mailto:JellyToy@business.com.my"><i class="fas fa-envelope"></i> JellyToy@business.com.my</a></li>
+                    <li><a href="mailto:Lozodo@business.com.my"><i class="fas fa-envelope"></i> Lozodo@business.com.my</a></li>
                 </ul>
                 <div class="icons">
                     <i class="fa-brands fa-facebook-f"></i>
@@ -60,31 +60,30 @@
             </div>
     </section>
     <div class="footer-bottom">
-        <p>Copyright © JellyToy All Rights Reserved. @ <?= date('Y') ?></p>
+        <p>Copyright © Lozodo All Rights Reserved. @ <?= date('Y') ?></p>
     </div>
 
     <script src="/lib/jquery.min.js"></script>
     <script src="/js/app.js"></script>
+    <script src="/js/_head.js"></script>
     <script>
         var loader = document.getElementById("preloader");
         window.addEventListener("load", function() {
             setTimeout(function() {
                 loader.style.transform = "translateY(-100%)";
-            }, <?php echo rand(150, 500); ?>);
+            }, <?php echo rand(150, 150); ?>);
 
             setTimeout(function() {
                 loader.style.display = "none";
-            }, 1000);
+            }, 0);
         });
+
+        <?php if (isset($toastType) && isset($toastMessage)): ?>
+            window.onload = function() {
+                createToast('<?= $toastType ?>', '<?= $toastMessage ?>');
+            };
+        <?php endif; ?>
     </script>
-
-    <!-- Link to the JS file that has the same name with PHP file -->
-    <?php
-    $current_page = basename($_SERVER['PHP_SELF'], '.php');
-    $specific_css = '/js/' . $current_page . '.js';
-    echo '<script src="' . htmlspecialchars($specific_css) . '"></script>';
-    ?>
-
     </body>
 
     </html>

@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
+/* Global Styles */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    font-family: 'Roboto', sans-serif;
+    height: 100%;
+    background-color: #f7f4f2;
+    color: #4b3c2d;
+    overflow-x: hidden;
+}
+
+/* Main Wrapper */
+.main-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 15vh;
+    padding: 20px;
+}
+
+/* Container Styles */
+.container {
+    max-width: 1200px;
+    width: 100%;
+    padding: 0;
+    background-color: #fdf6f0;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Product Division */
+.product-div {
+    display: flex;
+    flex-direction: row;
+    margin: 20px 0;
+}
+
+/* Product Image Section */
+.product-div-left {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+}
+
+.img-container img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 2px solid #d68a65;
+    background-color: #ffffff;
+}
+
+/* Hover Container */
+.hover-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f0ece8;
+    border-radius: 5px;
+}
+
+.hover-container div {
+    border-radius: 5px;
+    margin: 0 5px;
+    transition: border-color 0.3s ease;
+}
+
+.hover-container div:hover {
+    border-color: #4b3c2d;
+}
+
+.hover-container div img {
+    width: 70px;
+    border-radius: 5px;
+}
+
+/* Product Info Section */
+.product-div-right {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.product-name {
+    font-size: 32px;
+    margin-bottom: 10px;
+    font-weight: 700;
+    color: #4b3c2d;
+}
+
+.product-price {
+    font-size: 28px;
+    color: #d68a65;
+    margin: 10px 0;
+}
+
+.product-rating {
+    margin: 12px 0;
+    font-size: 18px;
+    color: #7b6f61;
+}
+
+.product-description {
+    line-height: 1.8;
+    margin: 20px 0;
+    font-size: 16px;
+}
+
+/* Quantity Input */
+.quantity-label {
+    font-size: 16px;
+    margin: 10px 0;
+    font-weight: 500;
+    color: #4b3c2d;
+    text-align: left;
+    display: flex;
+    align-items: center;
+}
+
+.quantity-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.quantity-input {
+    width: 50px;
+    padding: 8px;
+    font-size: 16px;
+    border: 2px solid #d68a65;
+    border-radius: 5px;
+    outline: none;
+    text-align: center;
+    margin-right: 10px;
+    transition: border-color 0.3s ease;
+}
+
+.quantity-input:focus {
+    border-color: #4b3c2d;
+}
+
+/* Button Groups */
+.btn-groups {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.btn-groups button {
+    flex: 1;
+    font-size: 16px;
+    text-transform: uppercase;
+    padding: 12px;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    margin: 0 5px;
+}
+
+.add-cart-btn {
+    background-color: #d68a65;
+}
+
+.add-cart-btn:hover {
+    background-color: #fff;
+    color: #d68a65;
+    border-color: #d68a65;
+}
+
+.buy-now-btn {
+    background-color: #4b3c2d;
+}
+
+.buy-now-btn:hover {
+    background-color: #fff;
+    color: #4b3c2d;
+    border-color: #4b3c2d;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 992px) {
+    .product-div {
+        flex-direction: column;
+    }
+
+    .product-div-left {
+        order: 1;
+    }
+
+    .product-div-right {
+        order: 2;
+        text-align: center;
+    }
+
+    .hover-container {
+        justify-content: center;
+    }
+
+    .btn-groups {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .btn-groups button {
+        margin-bottom: 10px;
+    }
+
+    .quantity-input {
+        width: 40px;
+        margin: 10px 0;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .btn-groups button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .quantity-input {
+        width: 35px;
+    }
+}

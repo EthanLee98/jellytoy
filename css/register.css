@@ -1,0 +1,178 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+    min-height: 100vh;
+}
+
+form {
+    padding: 25px;
+    background: #fff;
+    max-width: 1000px;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+form h2 {
+    font-size: 27px;
+    text-align: center;
+}
+
+form .form-group {
+    margin-bottom: 15px;
+    position: relative;
+}
+
+form label {
+    display: block;
+    font-size: 15px;
+    margin-bottom: 7px;
+}
+
+form input,
+form select {
+    height: 40px;
+    padding: 10px;
+    width: 100%;
+    font-size: 15px;
+    outline: none;
+    background: #fff;
+    border-radius: 3px;
+    border: 1px solid #bfbfbf;
+}
+
+@keyframes rainbow {
+    0% { border-color: red; }
+    14% { border-color: orange; }
+    28% { border-color: yellow; }
+    42% { border-color: green; }
+    57% { border-color: blue; }
+    71% { border-color: indigo; }
+    85% { border-color: violet; }
+    100% { border-color: red; }
+}
+
+form input:focus,
+form select:focus {
+    border-color: red; /* Initial border color */
+    box-shadow: 0 0 5px rgba(255, 0, 0, 0.5); /* Initial shadow */
+    outline: none; /* Remove default outline */
+    animation: rainbow 1.5s infinite; /* Apply the rainbow animation */
+    transition: box-shadow 0.3s ease; /* Smooth transition for shadow */
+}
+
+form input.error,
+form select.error {
+    border-color: #f91919;
+    background: #f9f0f1;
+}
+
+form small {
+    font-size: 14px;
+    margin-top: 5px;
+    display: block;
+    color: #f91919;
+}
+
+.form-group input[type="password"] + i,
+.form-group input[type="text"] + i {
+    position: absolute;
+    right: 0px;
+    height: 40px;
+    top: 28px;
+    font-size: 13px;
+    line-height: 40px;
+    width: 45px;
+    cursor: pointer;
+    color: #939393;
+    text-align: center;
+}
+
+.submit-btn {
+    margin-top: 30px;
+}
+
+input.submit_btn {
+    color: white;
+    border: none;
+    height: auto;
+    font-size: 15px;
+    padding: 10px 0;
+    border-radius: 35px;
+    cursor: pointer;
+    text-align: center;
+    background: #0897f7;
+    transition: 0.2s ease;
+    margin-bottom: 8px;
+}
+
+input.submit_btn:hover {
+    background: #2c6cc0;
+}
+
+input.reset_btn {
+    color: white;
+    border: none;
+    height: auto;
+    font-size: 15px;
+    padding: 10px 0;
+    border-radius: 35px;
+    cursor: pointer;
+    text-align: center;
+    background: #fa0505;
+    transition: 0.2s ease;
+    margin-bottom: 8px;
+}
+
+input.reset_btn:hover {
+    background: #da1b1b;
+}
+
+.form-group.submit-btn {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 20px;
+    grid-column: span 2;
+}
+
+.submit-button {
+    justify-self: start;
+}
+
+.reset-button {
+    justify-self: end;
+}
+
+/* Form Header */
+.Form-header {
+    margin: 0px 0 30px;
+    padding: 20px;
+    background: #EEF1FB;
+    align-items: center;
+    border-radius: 5px 5px 0 0;
+    justify-content: space-between;
+}
+
+.Form-header .Form-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+/* Other */
+form input, form select {
+    border-radius: 25px;
+}

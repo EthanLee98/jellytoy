@@ -237,7 +237,7 @@ class SimpleImage
         }
 
         // Create image object from string
-        $this->image = imagecreatefromstring($file);
+        $this->image = @imagecreatefromstring($file);
 
         // Get image info
         $info = @getimagesizefromstring($file);

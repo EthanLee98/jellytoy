@@ -1,5 +1,5 @@
 <?php
-include '/_base.php'; // Include base functions (database, mail, etc.)
+include '../_base.php'; // Include base functions (database, mail, etc.)
 
 // Initialize variables for error and success messages
 $_err = [];
@@ -32,7 +32,7 @@ if (is_post()) {
 
             if ($result) {
                 // If a valid token exists, prevent resending the email
-                temp('info', 'A password reset link has already been sent to your email and is still active.');
+                temp_new('info', 'A password reset link has already been sent to your email and is still active.');
                 $success = 'A password reset link has already been sent to your email and is still active.';
             } else {
                 // Generate password reset token and expiry (e.g., 15 minutes)
@@ -54,7 +54,7 @@ if (is_post()) {
                 // Attempt to send the email
                 if ($mail->send()) {
                     $success = 'A password reset link has been sent to your email.';
-                    temp('info', 'A password reset link has been sent to your email.');
+                    temp_new('info', 'A password reset link has been sent to your email.');
                 } else {
                     $_err['email'] = 'Failed to send reset password email. Please try again later.';
                 }
@@ -67,31 +67,33 @@ if (is_post()) {
 // Page setup and form display
 // ----------------------------------------------------------------------------
 $_title = 'User | Forgot Password';
-include '/_head.php'; // Include header file
+include '../_head.php'; // Include header file
 ?>
 
 <link rel="stylesheet" href="/css/forgotPassword.css">
 
 <!-- HTML form for email input -->
-<div class="forgot-password-container">
-    <h2 id="forgotPasswordTitle">Forgot Password</h2>
+<div class="container">
+    <div class="forgot-password-container">
+        <h2 id="forgotPasswordTitle">Forgot Password</h2>
 
-    <!-- Display success message if email is sent -->
-    <?php if (!empty($success)): ?>
-        <p class="forgot-password-success"><?php echo $success; ?></p>
-    <?php endif; ?>
+        <!-- Display success message if email is sent -->
+        <?php if (!empty($success)): ?>
+            <p class="forgot-password-success"><?php echo $success; ?></p>
+        <?php endif; ?>
 
-    <!-- Forgot password form -->
-    <form id="forgotPasswordForm" method="post">
-        <div>
-            <label for="forgotEmailInput">Enter your registered email address:</label>
-            <input type="email" id="forgotEmailInput" class="forgot-password-input" name="email" required>
-            <span id="forgotEmailError" class="forgot-password-error"><?php echo isset($_err['email']) ? $_err['email'] : ''; ?></span>
-        </div>
-        <div>
-            <button type="submit" id="forgotPasswordSubmitBtn">Submit</button>
-        </div>
-    </form>
+        <!-- Forgot password form -->
+        <form id="forgotPasswordForm" method="post">
+            <div>
+                <label for="forgotEmailInput">Enter your registered email address:</label>
+                <input type="email" id="forgotEmailInput" class="forgot-password-input" name="email" required>
+                <span id="forgotEmailError" class="forgot-password-error"><?php echo isset($_err['email']) ? $_err['email'] : ''; ?></span>
+            </div>
+            <div>
+                <button type="submit" id="forgotPasswordSubmitBtn">Submit</button>
+            </div>
+        </form>
+    </div>
 </div>
 
 <!-- jQuery for error display and form validation -->
@@ -121,5 +123,5 @@ include '/_head.php'; // Include header file
 </script>
 
 <?php
-include '/_foot.php'; // Include footer file
+include '../_foot.php'; // Include footer file
 ?>

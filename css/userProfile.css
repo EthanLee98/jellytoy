@@ -29,14 +29,13 @@
 
 .edit-profile {
     font-size: 14px;
-    color: #007bff;
+    color: #b19c64;
     text-decoration: none;
 }
 
 .profile-menu {
-    list-style: none;
+    list-style-type: none;
     padding: 0;
-    margin-top: 20px;
 }
 
 .profile-menu li {
@@ -45,8 +44,13 @@
 
 .profile-menu a {
     text-decoration: none;
-    font-size: 16px;
     color: #333;
+    /* Default text color */
+    padding: 10px 15px;
+    display: block;
+    /* Make the entire area clickable */
+    transition: background-color 0.3s, color 0.3s;
+    /* Smooth transition */
 }
 
 .profile-menu a.active {
@@ -65,6 +69,19 @@
 .profile-description {
     color: #888;
     margin-bottom: 20px;
+}
+
+/* Hover effect */
+.profile-menu li:hover {
+    background-color: var(--light-yellow);
+    /* Change background color on hover */
+    border-radius: 5px;
+    /* Add slight rounding to corners */
+}
+
+.profile-menu li:hover a {
+    /* Change text color on hover */
+    color: #FFF;
 }
 
 .form-group {
@@ -92,8 +109,9 @@ label {
     margin-left: 10px;
 }
 
-.save-button {
-    background-color: #e74c3c;
+.save-button,
+.reset-button {
+    background-color: var(--light-red);
     color: white;
     padding: 10px 20px;
     border: none;
@@ -102,7 +120,15 @@ label {
 }
 
 .save-button:hover {
-    background-color: #c0392b;
+    background-color: var(--dark-red);
+}
+
+.reset-button {
+    background-color: var(--light-blue);
+}
+
+.reset-button:hover {
+    background-color: var(--dark-blue);
 }
 
 .profile-picture {
@@ -118,4 +144,180 @@ label {
     font-size: 12px;
     color: #888;
     margin-left: 15px;
+}
+
+/* Confirmation Modal */
+#confirm-modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 1001;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    /* Center the text */
+}
+
+.modal-content p {
+    margin-bottom: 20px;
+    font-size: 18px;
+    color: #333;
+}
+
+/* Container for the buttons */
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    /* Center buttons */
+    margin-top: 10px;
+    /* Add some space above the buttons */
+}
+
+/* Yes Button (red) */
+.modal-btn-yes {
+    background-color: #e74c3c;
+    /* Red background */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+    /* Add space to the right */
+}
+
+.modal-btn-yes:hover {
+    background-color: #c0392b;
+    /* Darker red on hover */
+}
+
+/* No Button (grey) */
+.modal-btn-no {
+    background-color: #ccc;
+    /* Grey background */
+    color: #333;
+    /* Dark text color */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modal-btn-no:hover {
+    background-color: #bbb;
+    /* Darker grey on hover */
+}
+
+/* Overlay */
+#modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+
+/* Crop Modal Styles */
+#crop-modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 1001;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.crop-modal-content {
+    text-align: center;
+}
+
+.crop-modal-content img {
+    max-width: 100%;
+    /* Ensure the image doesn't exceed the width of the modal */
+    max-height: 80vh;
+    /* Limit height to 80% of the viewport height */
+    height: auto;
+    /* Maintain aspect ratio */
+}
+
+.crop-modal-content button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #e74c3c;
+    /* Red color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.crop-modal-content button:hover {
+    background-color: #c0392b;
+    /* Darker red on hover */
+}
+
+
+/* Delete Button Styles */
+.delete-button {
+    background-color: #FF4D4D;
+    /* Red background for delete */
+    color: white;
+    /* White text */
+    padding: 10px 20px;
+    /* Button padding */
+    border: none;
+    /* Remove default border */
+    border-radius: 5px;
+    /* Rounded corners */
+    cursor: pointer;
+    /* Pointer cursor on hover */
+    transition: background-color 0.3s;
+    /* Smooth transition */
+}
+
+/* Delete Button Hover Effect */
+.delete-button:hover {
+    background-color: #FF1A1A;
+    /* Darker red on hover */
+}
+
+
+/* Overlay */
+#del-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+/* Confirmation Modal */
+#confirm-del-modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 1001;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    /* Center the text */
 }

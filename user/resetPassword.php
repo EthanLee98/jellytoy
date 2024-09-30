@@ -1,10 +1,11 @@
 <?php
-include '/_base.php'; // Include base functions (database, utilities, etc.)
+include '../_base.php'; // Include base functions (database, utilities, etc.)
 
 // Initialize variables for error and success messages
 $_err = [];
 $success = '';
 $token = get('token'); // Get the token from URL
+
 
 // ----------------------------------------------------------------------------
 // Validate the token and handle password reset
@@ -25,8 +26,8 @@ if ($token) {
         // Validate password fields
         if (empty($password)) {
             $_err['password'] = 'Please enter a new password.';
-        } elseif (strlen($password) < 8) {
-            $_err['password'] = 'Password must be at least 8 characters long.';
+        } elseif (!is_strong_password($password)) {
+            $_err['password'] = 'Password must be at least 8 characters long, contain an uppercase letter, a lowercase letter, a number, and a special symbol.';
         }
 
         if ($password !== $confirm_password) {
@@ -57,8 +58,8 @@ if ($token) {
 // ----------------------------------------------------------------------------
 // Page setup and form display
 // ----------------------------------------------------------------------------
-$_title = 'User | Reset Password';
-include '/_head.php'; // Include header file
+$_title = 'Reset Password';
+include '../_head.php'; // Include header file
 ?>
 
 <link rel="stylesheet" href="/css/resetPassword.css">
@@ -108,11 +109,12 @@ include '/_head.php'; // Include header file
 
             var password = $('#resetPasswordInput').val();
             var confirm_password = $('#resetConfirmPasswordInput').val();
+            var strongPasswordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[_\W]).{8,}$/;
 
-            // Password validation: Check length
-            if (password.length < 8) {
+            // Password validation: Check strength
+            if (!strongPasswordPattern.test(password)) {
                 event.preventDefault(); // Prevent form submission
-                $('#resetPasswordError').text('Password must be at least 8 characters long.');
+                $('#resetPasswordError').text('Password must be at least 8 characters long, contain an uppercase letter, a lowercase letter, a number, and a special symbol.');
             }
 
             // Check if passwords match
@@ -125,5 +127,5 @@ include '/_head.php'; // Include header file
 </script>
 
 <?php
-include '/_foot.php'; // Include footer file
+include '../_foot.php'; // Include footer file
 ?>

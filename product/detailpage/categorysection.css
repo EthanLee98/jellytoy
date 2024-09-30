@@ -1,0 +1,167 @@
+/* General styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fafafa; 
+    color: #3b2a22; 
+    margin: 0;
+    padding: 0;
+}
+
+/* Container for product sections */
+.container {
+    max-width: 1200px;
+    margin: 40px auto; 
+    padding: 40px;
+    background-color: #f9f2ec; 
+    border-radius: 12px; 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); 
+}
+
+/* Section toggle styles */
+.section-toggle {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+/* Button styles for toggle */
+.section-toggle button {
+    background-color: #fff; 
+    border: 2px solid #a86b4b; 
+    padding: 12px 40px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #a86b4b; 
+    margin: 0 15px;
+    border-radius: 25px; 
+    cursor: pointer;
+    transition: all 0.4s ease; 
+}
+
+/* Active button style */
+.section-toggle button.active {
+    background-color: #a86b4b; 
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); 
+}
+
+/* Product section styles */
+.product-section {
+    display: none; 
+}
+
+.product-section.active {
+    display: block;
+}
+
+/* Wrapper for product cards */
+.product-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px; 
+    transition: transform 0.4s ease-in-out; 
+}
+
+/* Product card styling */
+.product-card {
+    position: relative;
+    width: 220px;
+    text-align: center;
+    background-color: #fff; 
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-10px); 
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); 
+}
+
+/* Image styling */
+.product-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover img {
+    transform: scale(1.05); 
+}
+
+/* Product info section */
+.product-info h3 {
+    font-size: 18px;
+    color: #3b2a22; 
+    margin: 10px 0;
+}
+
+.product-info p {
+    font-size: 16px;
+    color: #7d5e50; 
+    margin: 5px 0;
+}
+
+/* Product button hidden initially with opacity */
+.product-btn {
+    opacity: 0; 
+    transition: opacity 0.3s ease; 
+}
+
+/* Show button on hover */
+.product-card:hover .product-btn {
+    opacity: 1; 
+}
+
+/* Button styling inside product cards */
+.product-btn button {
+    background-color: #a86b4b; 
+    color: #fff;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 0 0 12px 12px;
+}
+
+.product-btn button:hover {
+    background-color: #8b5a4a; 
+}
+
+/* No products message styling */
+.product-wrapper p {
+    color: #999;
+    font-size: 18px;
+    text-align: center;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.product-navigation {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.product-navigation button {
+    padding: 10px 20px;
+    background-color: #a86b4b; 
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+.product-navigation button:disabled {
+    background-color: #ccc; 
+    cursor: not-allowed; 
+}
+
+.product-navigation button:hover:not(:disabled) {
+    background-color: #8b5a4a; 
+}

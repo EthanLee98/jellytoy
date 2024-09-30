@@ -1,5 +1,4 @@
 <?php
-// Include the database connection file
 include 'connectdb.php';
 
 // Fetch the product to be updated
@@ -237,19 +236,19 @@ $product = $result->fetch_assoc();
                     <?php if ($product['photo1']) { ?>
                         <div>
                             <input type="checkbox" name="remove_photos[]" value="photo1">
-                            <img src="<?php echo $product['photo1']; ?>" alt="Photo1">
+                            <img src="../images/products/<?php echo $product['photo1']; ?>" alt="Photo1">
                         </div>
                     <?php } ?>
                     <?php if ($product['photo2']) { ?>
                         <div>
                             <input type="checkbox" name="remove_photos[]" value="photo2">
-                            <img src="<?php echo $product['photo2']; ?>" alt="Photo2">
+                            <img src="../images/products/<?php echo $product['photo2']; ?>" alt="Photo2">
                         </div>
                     <?php } ?>
                     <?php if ($product['photo3']) { ?>
                         <div>
                             <input type="checkbox" name="remove_photos[]" value="photo3">
-                            <img src="<?php echo $product['photo3']; ?>" alt="Photo3">
+                            <img src="../images/products/<?php echo $product['photo3']; ?>" alt="Photo3">
                         </div>
                     <?php } ?>
                 </div>
